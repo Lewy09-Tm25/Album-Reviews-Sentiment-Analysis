@@ -19,7 +19,7 @@ if __name__ == "__main__":
     driver.implicitly_wait(time_out_secs)
     driver.set_page_load_timeout(time_out_secs)
     
-    file_path = "D:/CUNY/NLP/project/Album-Reviews-Sentiment-Analysis/data/final_data.csv"
+    file_path = "data/final_data.csv"
     for i,row in data.iloc[:].iterrows():
         try:    
             driver.get(row[3])
