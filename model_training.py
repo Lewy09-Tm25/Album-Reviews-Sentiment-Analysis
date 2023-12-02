@@ -45,14 +45,6 @@ if __name__ == "__main__":
         'degree' : [2,3,4],
         'gamma' : ['scale','auto'],
     }
-    dt_params = {
-        'criterion' : ['squared_error','friedman_mse','absolute_error','poisson'],
-        'splitter' : ['best','random']
-    }
-    rf_params = {
-        'n_estimators' : [10,25,50,100],
-        'criterion' : ['squared_error','friedman_mse','absolute_error','poisson'],
-    }
 
     # initializing the models and their parameter/s
     models_params = [
@@ -60,9 +52,7 @@ if __name__ == "__main__":
         (Lasso, lasso_params), 
         (Ridge, ridge_params), 
         (SGDRegressor, sgd_params), 
-        (SVR, svr_params), 
-        (DecisionTreeRegressor, dt_params), 
-        (RandomForestRegressor, rf_params)]
+        (SVR, svr_params)]
 
     # initializing mse for each model
     mses = []
