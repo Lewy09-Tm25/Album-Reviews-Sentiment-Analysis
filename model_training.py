@@ -10,6 +10,8 @@ from textblob import TextBlob
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
 from sklearn.model_selection import GridSearchCV
+from sklearn.preprocessing import StandardScaler
+
 
 from sklearn.linear_model import LinearRegression, Lasso, Ridge, SGDRegressor
 from sklearn.svm import SVR
@@ -19,10 +21,19 @@ from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 if __name__ == "__main__":
 
     # reading the data
-    data = pd.read_csv("datasets/sentiments_extracted_data.csv")
+    data = pd.read_csv("datasets/updated_features_data.csv")
+
+    # Isolate the features of interest
+    df_model = data[["score","label", "review_length", "%Positive Sentiment", "%Negative Sentiment", "%Neutral Sentiment",
+"% Long Word Length", "% Common POS Tag", "Proper Noun Count",
+       "Album mention counts", "Artist mention counts", "best_sim_with_top_revs"]]
     
-    X = data.drop(["score","label"], axis = 1)
-    y = data['score']
+    X = df_model.drop(["score","label"], axis = 1)
+    y = df_model['score']
+
+    scaler = StandardScaler()
+    X = scaler.fit_transform(X)
+
 
     # splitting the features and target
     x_train, x_test, y_train, y_test = train_test_split(X, y, test_size = 0.2)
