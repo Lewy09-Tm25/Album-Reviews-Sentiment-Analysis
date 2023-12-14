@@ -25,10 +25,10 @@ if __name__ == "__main__":
 
         # reading the data
         if model_name == "baseline":
-            df_model = pd.read_parquet("datasets/baseline_features.parquet")
+            df_model = pd.read_parquet("../datasets/baseline_features.parquet")
             print("\n=======================TRAINING [BASELINE] MODEL=======================")
         elif model_name == "best_model":
-            df_model = pd.read_parquet("datasets/engineered_features.parquet")
+            df_model = pd.read_parquet("../datasets/engineered_features.parquet")
             print("\n=======================TRAINING [BEST] MODEL=======================")
         
         X = df_model.drop("score", axis = 1)
@@ -90,7 +90,7 @@ if __name__ == "__main__":
             inloop_model.fit(x_train, y_train)
 
             # saving the model
-            joblib.dump(inloop_model, f"models/{model.__name__}.pkl")
+            joblib.dump(inloop_model, f"../models/{model.__name__}.pkl")
 
             pred = inloop_model.predict(x_test)
             pred = [round(score,1) for score in pred]
@@ -103,7 +103,7 @@ if __name__ == "__main__":
         # creating the metrics table
         models = [model.__name__ for model,_ in models_params]
         mse_table = pd.DataFrame(data = zip(models,mses,maes,r2s), columns = ['Model','MSE','MAE','R2'])
-        mse_table.to_csv("metrics/mean_squared_errors.csv", index = False)
+        mse_table.to_csv("../metrics/mean_squared_errors.csv", index = False)
         print(mse_table)
 
         # duration = 5000  # milliseconds
