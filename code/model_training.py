@@ -4,9 +4,6 @@ import joblib
 import matplotlib.pyplot as plt
 from textblob import TextBlob
 
-# below package is just to let me know that the model script has been completely run :) works only in windows
-# import winsound
-
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
 from sklearn.model_selection import GridSearchCV
@@ -66,7 +63,7 @@ if __name__ == "__main__":
             (Lasso, lasso_params), 
             (Ridge, ridge_params), 
             (SGDRegressor, sgd_params), 
-            # (SVR, svr_params)
+            (SVR, svr_params)
             ]
 
         # initializing mse for each model
@@ -103,9 +100,9 @@ if __name__ == "__main__":
         # creating the metrics table
         models = [model.__name__ for model,_ in models_params]
         mse_table = pd.DataFrame(data = zip(models,mses,maes,r2s), columns = ['Model','MSE','MAE','R2'])
-        mse_table.to_csv("../metrics/mean_squared_errors.csv", index = False)
-        print(mse_table)
-
-        # duration = 5000  # milliseconds
-        # freq = 1000  # Hz
-        # winsound.Beep(freq, duration)
+        if model_name == "baseline":
+            mse_table.to_csv("../metrics/baseline_metrics.csv", index = False)
+            print(mse_table)
+        elif model_name == "best_model":
+            mse_table.to_csv("../metrics/best_model_metrics.csv", index = False)
+            print(mse_table)
