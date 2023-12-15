@@ -1,6 +1,7 @@
 # Pitchfork Album Reviews Sentiment Analysis
 
-Art criticism, pivotal in shaping cultural perceptions, merges qualitative evaluation with numerical ratings, like those on Pitchfork.com. As technology and Natural Language Processing expand, caution is vital when quantifying art, as it profoundly impacts artists and audiences. Critics' influence on mainstream culture underscores the importance of a balanced correlation between qualitative and quantitative assessments in artistic evaluation. This project delves into music reviews to analyze the alignment between textual sentiments and numerical ratings. 
+The exploration of art and the proliferation of technology has allowed for widespread discussions about the evaluation of art through ML-assisted methods. With the expansion of Natural Language Processing, the evaluation of art has inevitably been numericalized, and this has its own accompaniment of danger. Reducing art to a number must be done with great care as this leaves a lasting impression to the audience and artist.
+This project focuses on written music reviews, sourced from Pitchfork.com, a popular online music magazine. Pitchfork music critics publish a written review of an album, accompanied by a numerical rating. In an ideal landscape, the qualitative written review is consistent with its quantitative counterpart (the numerical rating). The goal of this project is to better understand the correspondence between written and numerical music criticism, through the use of sentiment analysis and machine learning methods.
 
 To use any of these files, please execute the command
 ```
